@@ -18,9 +18,9 @@
 
     atomize/1,
 
-    tokenize/1,
-
-    read_from/1
+    read/1,
+      read_from/1,
+      tokenize/1
 
 ]).
 
@@ -159,6 +159,9 @@ eval_begin_loop(Items, Env) ->
 
 
 
+atomize(<<"+">>) -> <<"+">>;  % inexplicably, binary_to_integer( <<"+">> ) is zero.  ffs.
+atomize(<<"-">>) -> <<"-">>;
+
 atomize(X) ->
 
     case catch binary_to_integer(X) of
@@ -237,4 +240,12 @@ read_from([ <<")">> | Remainder ], Work) ->
 
 read_from([ Token | Remainder ], Work) ->
 
-    read_from(Remainder, [Token]++Work).
+    read_from(Remainder, [atomize(Token)]++Work).
+
+
+
+
+
+read(X) ->
+
+    read_from( tokenize(X) ).
