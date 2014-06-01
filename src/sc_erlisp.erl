@@ -7,6 +7,10 @@
 
 -export([
 
+    global_environment/0,
+
+    env_find/2,
+
     eval_symbol_or_const/2,
 
     eval/1,
@@ -32,7 +36,8 @@ is_a_symbol(Thing) ->
 
 env_find(Env, Item) ->
 
-    maps:find(Item, Env).
+    {ok, I} = maps:find(Item, Env),
+    I.
 
 
 
@@ -80,8 +85,8 @@ eval(Thing) ->  % no environment?  pull the global one.
 
 eval_symbol_or_const(Thing, Env) ->
 
-    case is_a_symbol(Thing) of                % whargarbl what the
-        true  -> env_find(Env, Thing);  % whargarbl nonsense syntax todo fixme, was Env.find(Thing)[Thing]
+    case is_a_symbol(Thing) of
+        true  -> env_find(Env, Thing);
         false -> Thing
     end.
 
@@ -110,7 +115,7 @@ eval( [X|_] = OSF,                   Env ) when X == <<"quote">>;
 eval( SimpleList, Env ) -> 
 
     [ Proc | ExprRes ] = [ eval(Item, Env) || Item <- SimpleList  ],
-    Proc(ExprRes).
+    apply(Proc, ExprRes).
 
 
 
