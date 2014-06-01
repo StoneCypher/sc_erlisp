@@ -3,9 +3,6 @@ sc_erlisp
 
 All the cool kids have made a scheme; I figure I ought to too.
 
-1. Clear the whargarbls in this file
-1. Compile and test before updating
-
 
 
 
