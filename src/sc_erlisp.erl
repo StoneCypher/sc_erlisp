@@ -49,8 +49,6 @@ env_find(Env, Item) ->
 
 % todo this is wrong probably and needs to go to parent envs
 
-    io:format("Env lookup.~n~n  ~p~n~n  ~p~n~n", [Env, Item]),
-
     {ok, I} = maps:find(Item, Env),
     I.
 
@@ -79,12 +77,13 @@ global_environment() ->
 
     #{
 
-        <<"not">> => fun(<<"#f">>) -> <<"#t">>; (_) -> <<"#f">> end,
+        <<"not">>      => fun(<<"#f">>) -> <<"#t">>; (_) -> <<"#f">> end,
+        <<"boolean?">> => fun(<<"#f">>) -> <<"#t">>; (<<"#t">>) -> <<"#t">>; (_) -> <<"#f">> end,
 
-        <<"+">>   => fun(X,Y) -> X+Y end,
-        <<"-">>   => fun(X,Y) -> X-Y end,
-        <<"*">>   => fun(X,Y) -> X*Y end,
-        <<"/">>   => fun(X,Y) -> X/Y end
+        <<"+">>        => fun(X,Y) -> X+Y end,
+        <<"-">>        => fun(X,Y) -> X-Y end,
+        <<"*">>        => fun(X,Y) -> X*Y end,
+        <<"/">>        => fun(X,Y) -> X/Y end
 
     }.  % todo
 
