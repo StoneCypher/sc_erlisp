@@ -20,7 +20,9 @@
 
     read/1,
       read_from/1,
-      tokenize/1
+      tokenize/1,
+
+    run/1
 
 ]).
 
@@ -249,3 +251,11 @@ read_from([ Token | Remainder ], Work) ->
 read(X) ->
 
     read_from( tokenize(X) ).
+
+
+
+
+
+run(X) ->
+
+    eval(read(X)).
