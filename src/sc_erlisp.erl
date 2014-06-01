@@ -18,9 +18,13 @@
 
 
 
-is_a(Kind, Thing) ->
+is_a_symbol(Number) when is_number(Number) ->
 
-    todo.
+    false;
+
+is_a_symbol(Thing) ->
+
+    true.     % todo not sure if this is correct.
 
 
 
@@ -28,7 +32,7 @@ is_a(Kind, Thing) ->
 
 env_find(Env, Item) ->
 
-    todo.
+    maps:find(Item, Env).
 
 
 
@@ -52,7 +56,11 @@ set_member_to(Env, Item, NewVal) ->
 
 global_environment() ->
 
-    [].  % todo
+    #{
+
+        <<"*">> => fun(X,Y) -> X*Y end
+
+    }.  % todo
 
                                                                                  
 
@@ -72,8 +80,8 @@ eval(Thing) ->  % no environment?  pull the global one.
 
 eval_symbol_or_const(Thing, Env) ->
 
-    case is_a(symbol, Thing) of                % whargarbl what the
-        true  -> member(env_find(Env, Thing), Thing);  % whargarbl nonsense syntax todo fixme, was Env.find(Thing)[Thing]
+    case is_a_symbol(Thing) of                % whargarbl what the
+        true  -> env_find(Env, Thing);  % whargarbl nonsense syntax todo fixme, was Env.find(Thing)[Thing]
         false -> Thing
     end.
 
