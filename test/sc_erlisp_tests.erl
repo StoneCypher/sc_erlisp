@@ -30,3 +30,18 @@ global_environment_test_() ->
 
 	    ] }
 	] }.
+
+
+
+
+
+read_test_() ->
+
+    % todo stoch this
+    X = [ <<"+">>,2, [ <<"/">>, 5,3 ] ],
+
+    { "Read tests", [
+
+        { "Round trip", ?_assert(X == sc_erlisp:read(sc_erlisp:to_binary(X))) }
+
+    ] }.

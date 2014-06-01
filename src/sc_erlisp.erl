@@ -16,6 +16,8 @@
     eval/1,
       eval/2,
 
+    to_binary/1,
+
     atomize/1,
 
     read/1,
@@ -59,7 +61,7 @@ env_find(Env, Item) when is_atom(Item) ->
 
 
 
-    
+
 
 env_find(Env, Item) ->
 
@@ -283,3 +285,11 @@ read(X) ->
 run(X) ->
 
     eval(read(X)).
+
+
+
+
+
+to_binary(Bin)  when is_binary(Bin)  -> Bin;
+to_binary(Int)  when is_integer(Int) -> integer_to_binary(Int);
+to_binary(List) when is_list(List)   -> list_to_binary([ <<"(">>, sc_list:between([ to_binary(L) || L <- List], <<" ">>), <<")">> ]).
