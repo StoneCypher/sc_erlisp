@@ -1,7 +1,7 @@
 %% -*- mode: erlang -*-
-{application, example_project,
+{application, sc_erlisp,
  [
-  {description, "Example Concrete generator project"},
+  {description, "Tiny erlang implementation of a scheme lisp"},
   {vsn, "0.0.1"},
   {registered, []},
   {applications, [

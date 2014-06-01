@@ -50,7 +50,7 @@ set_member_to(Env, Item, NewVal) ->
 
 global_environment() ->
 
-    todo.
+    [].  % todo
 
                                                                                  
 
