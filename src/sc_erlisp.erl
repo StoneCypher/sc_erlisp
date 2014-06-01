@@ -7,6 +7,8 @@
 
 -export([
 
+    eval_symbol_or_const/2,
+
     eval/1,
       eval/2
 
@@ -56,6 +58,8 @@ global_environment() ->
 
 
 
+%% @doc Evaluates a tokenized series of binaries as a scheme program in the global context.
+
 eval(Thing) ->  % no environment?  pull the global one.
 
     eval(Thing, global_environment()).
@@ -63,6 +67,8 @@ eval(Thing) ->  % no environment?  pull the global one.
 
 
 
+
+%% @doc Evaluates a given individual symbol or constant in the context provided.
 
 eval_symbol_or_const(Thing, Env) ->
 
@@ -74,6 +80,8 @@ eval_symbol_or_const(Thing, Env) ->
 
 
 
+
+%% @doc Evaluates a tokenized series of binaries as a scheme program in the context provided.
 
 eval( NotAList,                      Env ) when not is_list(NotAList) -> eval_symbol_or_const(NotAList, Env);
 
