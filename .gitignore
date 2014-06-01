@@ -1,10 +1,8 @@
 ebin/*
 *.beam
 deps/*
-rel/example_project
+rel/crap_json
 .concrete/DEV_MODE
-*.plt
+deps.plt
 .eunit
-*.o
-erl_crash.dump
 .rebar

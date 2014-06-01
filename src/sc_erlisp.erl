@@ -53,6 +53,14 @@ is_a_symbol(Thing) ->
 
 
 
+env_find(Env, Item) when is_atom(Item) ->
+
+    env_find(Env, list_to_binary(atom_to_list(Item)));
+
+
+
+    
+
 env_find(Env, Item) ->
 
 % todo this is wrong probably and needs to go to parent envs
