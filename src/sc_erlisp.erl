@@ -18,7 +18,9 @@
 
     atomize/1,
 
-    tokenize/1
+    tokenize/1,
+
+    read_from/1
 
 ]).
 
@@ -171,6 +173,14 @@ atomize(X) ->
 
 
 
+tokenize(X) when is_list(X) ->
+
+    tokenize(list_to_binary(X));
+
+
+
+
+
 tokenize(X) ->
 
     [
@@ -184,3 +194,47 @@ tokenize(X) ->
 
         B =/= <<>>
     ].
+
+
+
+
+
+read_from(Tokens) ->
+
+    case { Parsed, Overflow } = read_from(Tokens, []) of
+        { _, [Item|_] } -> { error, unexpected_end_of_file };
+        { P, [] } -> P
+    end.
+
+
+
+
+
+read_from([], [Work]) ->
+
+    { Work, [] };
+
+
+
+
+
+read_from([ <<"(">> | Remainder ], Work) ->
+
+    { Parsed, Overflow } = read_from(Remainder, []),
+    read_from(Overflow, [Parsed] ++ Work );
+
+
+
+
+
+read_from([ <<")">> | Remainder ], Work) ->
+
+    { lists:reverse(Work), Remainder };
+
+
+
+
+
+read_from([ Token | Remainder ], Work) ->
+
+    read_from(Remainder, [Token]++Work).
