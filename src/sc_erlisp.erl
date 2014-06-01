@@ -16,6 +16,8 @@
     eval/1,
       eval/2,
 
+    atomize/1,
+
     tokenize/1
 
 ]).
@@ -150,6 +152,20 @@ eval( SimpleList, Env ) ->
 eval_begin_loop(Items, Env) ->
 
     todo.
+
+
+
+
+
+atomize(X) ->
+
+    case catch binary_to_integer(X) of
+        {'EXIT', _} -> case catch binary_to_float(X) of
+            {'EXIT', _} -> X;
+            FResult     -> FResult
+        end;
+        IResult -> IResult
+    end.
 
 
 
