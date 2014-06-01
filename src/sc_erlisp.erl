@@ -206,7 +206,7 @@ tokenize(X) ->
 
 read_from(Tokens) ->
 
-    case { Parsed, Overflow } = read_from(Tokens, []) of
+    case { Parsed, Overflow } = read_from(Tokens, [], 0) of
         { _, [Item|_] } -> { error, unexpected_end_of_file };
         { P, [] } -> P
     end.
@@ -215,7 +215,7 @@ read_from(Tokens) ->
 
 
 
-read_from([], [Work]) ->
+read_from([], [Work], 0) ->
 
     { Work, [] };
 
@@ -223,16 +223,32 @@ read_from([], [Work]) ->
 
 
 
-read_from([ <<"(">> | Remainder ], Work) ->
+read_from([], Work, OpenParenCount) when OpenParenCount > 0 ->
 
-    { Parsed, Overflow } = read_from(Remainder, []),
-    read_from(Overflow, [Parsed] ++ Work );
-
+    throw(unexpected_end_of_file);
 
 
 
 
-read_from([ <<")">> | Remainder ], Work) ->
+
+read_from([ <<"(">> | Remainder ], Work, OpenParenCount) ->
+
+    { Parsed, Overflow } = read_from(Remainder, [], OpenParenCount + 1),
+    read_from(Overflow, [Parsed] ++ Work, OpenParenCount);
+
+
+
+
+
+read_from([ <<")">> | Remainder ], Work, 0) ->
+
+    throw(unexpected_close_parenthesis);
+
+
+
+
+
+read_from([ <<")">> | Remainder ], Work, OpenParenCount) ->
 
     { lists:reverse(Work), Remainder };
 
@@ -240,9 +256,9 @@ read_from([ <<")">> | Remainder ], Work) ->
 
 
 
-read_from([ Token | Remainder ], Work) ->
+read_from([ Token | Remainder ], Work, OpenParenCount) ->
 
-    read_from(Remainder, [atomize(Token)]++Work).
+    read_from(Remainder, [atomize(Token)]++Work, OpenParenCount).
 
 
 
