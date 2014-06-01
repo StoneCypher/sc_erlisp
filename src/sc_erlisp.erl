@@ -26,6 +26,17 @@ is_a_symbol(Number) when is_number(Number) ->
 
     false;
 
+
+is_a_symbol( <<"#t">> ) ->
+
+    false;
+
+
+is_a_symbol( <<"#f">> ) ->
+
+    false;
+
+
 is_a_symbol(Thing) ->
 
     true.     % todo not sure if this is correct.
@@ -36,6 +47,10 @@ is_a_symbol(Thing) ->
 
 env_find(Env, Item) ->
 
+% todo this is wrong probably and needs to go to parent envs
+
+    io:format("Env lookup.~n~n  ~p~n~n  ~p~n~n", [Env, Item]),
+
     {ok, I} = maps:find(Item, Env),
     I.
 
@@ -45,7 +60,8 @@ env_find(Env, Item) ->
 
 member(Env, Item) ->
 
-    todo.
+    {ok, I} = maps:find(Item, Env),
+    I.
 
 
 
@@ -63,7 +79,12 @@ global_environment() ->
 
     #{
 
-        <<"*">> => fun(X,Y) -> X*Y end
+        <<"not">> => fun(<<"#f">>) -> <<"#t">>; (_) -> <<"#f">> end,
+
+        <<"+">>   => fun(X,Y) -> X+Y end,
+        <<"-">>   => fun(X,Y) -> X-Y end,
+        <<"*">>   => fun(X,Y) -> X*Y end,
+        <<"/">>   => fun(X,Y) -> X/Y end
 
     }.  % todo
 
@@ -95,6 +116,8 @@ eval_symbol_or_const(Thing, Env) ->
 
 
 %% @doc Evaluates a tokenized series of binaries as a scheme program in the context provided.
+
+eval( Atom,                          Env ) when is_atom(Atom)         -> eval(list_to_binary(atom_to_list(Atom)), Env);
 
 eval( NotAList,                      Env ) when not is_list(NotAList) -> eval_symbol_or_const(NotAList, Env);
 
