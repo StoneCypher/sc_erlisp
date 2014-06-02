@@ -38,10 +38,13 @@ global_environment_test_() ->
 read_test_() ->
 
     % todo stoch this
-    X = [ <<"+">>,2, [ <<"/">>, 5,3 ] ],
+    % these have to be in the bin notation to match the out notation
+    TestCases = [
+        { "(+ 1 2)",            [ <<"+">>,1,2 ]                            },
+        { "(+ 2 (/ 5 3))",      [ <<"+">>,2, [ <<"/">>, 5,3 ] ]            },
+        { "(set! x (/ 5 3.5))", [ <<"set!">>,<<"x">>, [ <<"/">>, 5,3.5 ] ] }
+    ],
 
-    { "Read tests", [
+    RoundTrip = fun(X) -> ?_assert(X == sc_erlisp:read(sc_erlisp:to_binary(X))) end,
 
-        { "Round trip", ?_assert(X == sc_erlisp:read(sc_erlisp:to_binary(X))) }
-
-    ] }.
+    { "Read test roundtrips", [ {Label, RoundTrip(Pattern)} || {Label, Pattern} <- TestCases ] }.

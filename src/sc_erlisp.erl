@@ -290,6 +290,7 @@ run(X) ->
 
 
 
-to_binary(Bin)  when is_binary(Bin)  -> Bin;
-to_binary(Int)  when is_integer(Int) -> integer_to_binary(Int);
-to_binary(List) when is_list(List)   -> list_to_binary([ <<"(">>, sc_list:between([ to_binary(L) || L <- List], <<" ">>), <<")">> ]).
+to_binary(Bin)   when is_binary(Bin)  -> Bin;
+to_binary(Int)   when is_integer(Int) -> integer_to_binary(Int);
+to_binary(Float) when is_float(Float) -> float_to_binary(Float);
+to_binary(List)  when is_list(List)   -> list_to_binary([ <<"(">>, sc_list:between([ to_binary(L) || L <- List], <<" ">>), <<")">> ]).
