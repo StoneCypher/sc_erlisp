@@ -15,21 +15,27 @@ global_environment_test_() ->
 
     { "Global environment tests", [
 
-	    { "Correctness tests", [
-	        { "Is a map",                        ?_assert(true == is_map(sc_erlisp:global_environment())) },
-	        { "Contains for atoms '+'",          Has( '+' ) },
-	        { "Contains for binaries <<\"+\">>", Has( <<"+">> ) }
+        { "Correctness tests", [
+            { "Is a map",                        ?_assert(true == is_map(sc_erlisp:global_environment())) },
+            { "Contains for atoms '+'",          Has( '+' ) },
+            { "Contains for binaries <<\"+\">>", Has( <<"+">> ) }
         ] },
 
-	    { "Preamble tests", [
+        { "Preamble tests", [
 
-	        { "Preamble has +", Has( '+' ) },
-	        { "Preamble has -", Has( '-' ) },
-	        { "Preamble has *", Has( '*' ) },
-	        { "Preamble has /", Has( '/' ) }
+            { "Arithmetic" , [
+                { "Preamble has +",         Has( '+' ) },
+                { "Preamble has -",         Has( '-' ) },
+                { "Preamble has *",         Has( '*' ) },
+                { "Preamble has /",         Has( '/' ) },
+                { "Preamble has quotient",  Has( 'quotient' ) },
+                { "Preamble has remainder", Has( 'remainder' ) },
+                { "Preamble has modulo",    Has( 'modulo' ) },
+                { "Preamble has expt",      Has( 'expt' ) }
+            ] }
 
-	    ] }
-	] }.
+        ] }
+    ] }.
 
 
 
