@@ -110,6 +110,7 @@ global_environment() ->
         <<"expt">>      => fun(X,Y) -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
 
         <<"min">>       => fun(X,Y) -> min(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
+        <<"max">>       => fun(X,Y) -> max(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
 
         <<"gcd">>       => fun(X,Y) -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"lcm">>       => fun(X,Y) -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
