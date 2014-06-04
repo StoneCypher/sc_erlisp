@@ -112,7 +112,11 @@ global_environment() ->
         <<"min">>       => fun(X,Y) -> min(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"max">>       => fun(X,Y) -> max(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
 
-        <<"floor">>     => fun(X)   -> trunc(X) end,
+        <<"floor">>     => fun(X)   -> sc_math:floor(X) end,
+        <<"ceiling">>   => fun(X)   -> sc_math:ceil(X) end,
+        <<"ceil">>      => fun(X)   -> sc_math:ceil(X) end,
+        <<"truncate">>  => fun(X)   -> trunc(X) end,
+        <<"trunc">>     => fun(X)   -> trunc(X) end,
 
         <<"gcd">>       => fun(X,Y) -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"lcm">>       => fun(X,Y) -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2

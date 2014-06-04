@@ -44,9 +44,11 @@ global_environment_test_() ->
             { "Transformative" , [
                 { "Preamble has floor",    Has( 'floor' ) },
                 { "Preamble has ceiling",  Has( 'ceiling' ) },
+                { "... synonym ceil",      Has( 'ceil' ) },
                 { "Preamble has truncate", Has( 'truncate' ) },
-                { "Preamble has round",    Has( 'round' ) },
-                { "Preamble has abs",      Has( 'abs' ) }
+                { "... synonym trunc",     Has( 'trunc' ) }
+%               { "Preamble has round",    Has( 'round' ) },
+%               { "Preamble has abs",      Has( 'abs' ) }
             ] },
 
             { "Fractional" , [
