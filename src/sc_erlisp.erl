@@ -105,7 +105,9 @@ global_environment() ->
         <<"*">>         => fun(X,Y) -> X*Y end,
         <<"/">>         => fun(X,Y) -> X/Y end,
         <<"quotient">>  => fun(X,Y) -> X div Y end,
-        <<"remainder">> => fun(X,Y) -> X rem Y end
+        <<"remainder">> => fun(X,Y) -> X rem Y end,
+        <<"modulo">>    => fun(X,Y) -> X rem Y end,
+        <<"expt">>      => fun(X,Y) -> math:pow(X,Y) end   % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
 
     }.  % todo
 
