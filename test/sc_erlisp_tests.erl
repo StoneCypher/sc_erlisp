@@ -42,11 +42,11 @@ global_environment_test_() ->
             ] },
 
             { "Transformative" , [
-                { "Preamble has floor", Has( '+' ) },
-                { "Preamble has ceiling", Has( '-' ) },
-                { "Preamble has truncate", Has( '*' ) },
-                { "Preamble has round", Has( '/' ) }
-                { "Preamble has abs", Has( '/' ) }
+                { "Preamble has floor",    Has( 'floor' ) },
+                { "Preamble has ceiling",  Has( 'ceiling' ) },
+                { "Preamble has truncate", Has( 'truncate' ) },
+                { "Preamble has round",    Has( 'round' ) },
+                { "Preamble has abs",      Has( 'abs' ) }
             ] },
 
             { "Fractional" , [
