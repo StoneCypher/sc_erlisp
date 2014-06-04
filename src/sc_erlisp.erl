@@ -109,7 +109,7 @@ global_environment() ->
         <<"modulo">>    => fun(X,Y) -> X rem Y end,
         <<"expt">>      => fun(X,Y) -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
 
-        <<"">>
+        <<"gcd">>       => fun(X,Y) -> sc_math:gcd(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
 
     }.  % todo
 
