@@ -103,7 +103,8 @@ global_environment() ->
         <<"+">>        => fun(X,Y) -> X+Y end,
         <<"-">>        => fun(X,Y) -> X-Y end,
         <<"*">>        => fun(X,Y) -> X*Y end,
-        <<"/">>        => fun(X,Y) -> X/Y end
+        <<"/">>        => fun(X,Y) -> X/Y end,
+        <<"quotient">> => fun(X,Y) -> X div Y end
 
     }.  % todo
 
