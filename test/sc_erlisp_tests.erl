@@ -32,6 +32,14 @@ global_environment_test_() ->
                 { "Preamble has remainder", Has( 'remainder' ) },
                 { "Preamble has modulo",    Has( 'modulo' ) },
                 { "Preamble has expt",      Has( 'expt' ) }
+            ] },
+
+            { "Fractional" , [
+                { "Preamble has gcd",         Has( 'gcd' ) },
+                { "Preamble has lcm",         Has( 'lcm' ) },
+                { "Preamble has numerator",   Has( 'numerator' ) },
+                { "Preamble has denominator", Has( 'denominator' ) },
+                { "Preamble has rationalize", Has( 'rationalize' ) }
             ] }
 
         ] }
