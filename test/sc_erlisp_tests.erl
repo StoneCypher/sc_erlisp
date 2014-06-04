@@ -5,6 +5,8 @@
 -include_lib("proper/include/proper.hrl").
 -include_lib("eunit/include/eunit.hrl").
 
+% http://web.mit.edu/scheme_v9.0.1/doc/mit-scheme-ref/Numerical-operations.html
+
 
 
 
@@ -32,6 +34,11 @@ global_environment_test_() ->
                 { "Preamble has remainder", Has( 'remainder' ) },
                 { "Preamble has modulo",    Has( 'modulo' ) },
                 { "Preamble has expt",      Has( 'expt' ) }
+            ] },
+
+            { "Comparator" , [
+                { "Preamble has min", Has( 'min' ) },
+                { "Preamble has max", Has( 'max' ) }
             ] },
 
             { "Fractional" , [
