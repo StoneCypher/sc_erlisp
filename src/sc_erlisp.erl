@@ -95,16 +95,17 @@ global_environment() ->
 
     #{
 
-        <<"not">>      => fun(<<"#f">>) -> <<"#t">>; (_) -> <<"#f">> end,
-        <<"boolean?">> => fun(<<"#f">>) -> <<"#t">>; (<<"#t">>) -> <<"#t">>; (_) -> <<"#f">> end,
-        <<"eqv?">>     => fun(X,Y)      -> case (X == Y) of true -> <<"#t">>; _ -> <<"#f">> end end,  % todo whargarbl not an adequate impl
-        <<"symbol?">>  => fun(X)        -> is_a_symbol(X) end,
+        <<"not">>       => fun(<<"#f">>) -> <<"#t">>; (_) -> <<"#f">> end,
+        <<"boolean?">>  => fun(<<"#f">>) -> <<"#t">>; (<<"#t">>) -> <<"#t">>; (_) -> <<"#f">> end,
+        <<"eqv?">>      => fun(X,Y)      -> case (X == Y) of true -> <<"#t">>; _ -> <<"#f">> end end,  % todo whargarbl not an adequate impl
+        <<"symbol?">>   => fun(X)        -> is_a_symbol(X) end,
 
-        <<"+">>        => fun(X,Y) -> X+Y end,
-        <<"-">>        => fun(X,Y) -> X-Y end,
-        <<"*">>        => fun(X,Y) -> X*Y end,
-        <<"/">>        => fun(X,Y) -> X/Y end,
-        <<"quotient">> => fun(X,Y) -> X div Y end
+        <<"+">>         => fun(X,Y) -> X+Y end,
+        <<"-">>         => fun(X,Y) -> X-Y end,
+        <<"*">>         => fun(X,Y) -> X*Y end,
+        <<"/">>         => fun(X,Y) -> X/Y end,
+        <<"quotient">>  => fun(X,Y) -> X div Y end,
+        <<"remainder">> => fun(X,Y) -> X rem Y end
 
     }.  % todo
 
