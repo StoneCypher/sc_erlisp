@@ -35,8 +35,8 @@ global_environment_test_() ->
             ] },
 
             { "Fractional" , [
-                { "Preamble has gcd",         Has( 'gcd' ) }
-%               { "Preamble has lcm",         Has( 'lcm' ) },
+                { "Preamble has gcd",         Has( 'gcd' ) },
+                { "Preamble has lcm",         Has( 'lcm' ) }
 %               { "Preamble has numerator",   Has( 'numerator' ) },
 %               { "Preamble has denominator", Has( 'denominator' ) },
 %               { "Preamble has rationalize", Has( 'rationalize' ) }
