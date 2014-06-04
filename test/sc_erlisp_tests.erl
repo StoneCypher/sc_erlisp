@@ -41,6 +41,14 @@ global_environment_test_() ->
                 { "Preamble has max", Has( 'max' ) }
             ] },
 
+            { "Transformative" , [
+                { "Preamble has floor", Has( '+' ) },
+                { "Preamble has ceiling", Has( '-' ) },
+                { "Preamble has truncate", Has( '*' ) },
+                { "Preamble has round", Has( '/' ) }
+                { "Preamble has abs", Has( '/' ) }
+            ] },
+
             { "Fractional" , [
                 { "Preamble has gcd",         Has( 'gcd' ) },
                 { "Preamble has lcm",         Has( 'lcm' ) }
