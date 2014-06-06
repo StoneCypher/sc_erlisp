@@ -25,6 +25,17 @@ Improvements will be gladly accepted.
 
 
 
+
+
+Usage
+-----
+
+1> sc_erlisp:run("(+ 2 3)").
+5
+
+
+
+
 Author
 ------
 
