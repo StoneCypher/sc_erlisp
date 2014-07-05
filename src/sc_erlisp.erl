@@ -122,6 +122,7 @@ global_environment() ->
         <<"positive?">> => fun(X)        when X > 0, is_number(X) -> <<"#t">>; (X) when is_number(X) -> <<"#f">> end, 
         <<"negative?">> => fun(X)        when X < 0, is_number(X) -> <<"#t">>; (X) when is_number(X) -> <<"#f">> end, 
         <<"odd?">>      => fun(X)        when X rem 2 == 1 -> <<"#t">>; (X) when is_integer(X) -> <<"#f">> end,
+        <<"even?">>     => fun(X)        when X rem 2 == 0 -> <<"#t">>; (X) when is_integer(X) -> <<"#f">> end,
 
         <<"gcd">>       => fun(X,Y)      -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"lcm">>       => fun(X,Y)      -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
