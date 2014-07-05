@@ -118,6 +118,8 @@ global_environment() ->
         <<"truncate">>  => fun(X)   -> trunc(X) end,
         <<"trunc">>     => fun(X)   -> trunc(X) end,
 
+        <<"zero?">>     => fun(0)   -> <<"#t">>; (0.0) -> <<"#t">>; (_) -> <<"#f">> end,  % todo should this be typesafe?  is zero? 0.0 #t?
+
         <<"gcd">>       => fun(X,Y) -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"lcm">>       => fun(X,Y) -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
 
