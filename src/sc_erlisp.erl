@@ -100,28 +100,29 @@ global_environment() ->
         <<"eqv?">>      => fun(X,Y)      -> case (X == Y) of true -> <<"#t">>; _ -> <<"#f">> end end,  % todo whargarbl not an adequate impl
         <<"symbol?">>   => fun(X)        -> is_a_symbol(X) end,
 
-        <<"+">>         => fun(X,Y) -> X+Y end,
-        <<"-">>         => fun(X,Y) -> X-Y end,
-        <<"*">>         => fun(X,Y) -> X*Y end,
-        <<"/">>         => fun(X,Y) -> X/Y end,
-        <<"quotient">>  => fun(X,Y) -> X div Y end,
-        <<"remainder">> => fun(X,Y) -> X rem Y end,
-        <<"modulo">>    => fun(X,Y) -> X rem Y end,
-        <<"expt">>      => fun(X,Y) -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
+        <<"+">>         => fun(X,Y)      -> X+Y end,
+        <<"-">>         => fun(X,Y)      -> X-Y end,
+        <<"*">>         => fun(X,Y)      -> X*Y end,
+        <<"/">>         => fun(X,Y)      -> X/Y end,
+        <<"quotient">>  => fun(X,Y)      -> X div Y end,
+        <<"remainder">> => fun(X,Y)      -> X rem Y end,
+        <<"modulo">>    => fun(X,Y)      -> X rem Y end,
+        <<"expt">>      => fun(X,Y)      -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
 
-        <<"min">>       => fun(X,Y) -> min(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
-        <<"max">>       => fun(X,Y) -> max(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
+        <<"min">>       => fun(X,Y)      -> min(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
+        <<"max">>       => fun(X,Y)      -> max(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
 
-        <<"floor">>     => fun(X)   -> sc_math:floor(X) end,
-        <<"ceiling">>   => fun(X)   -> sc_math:ceil(X) end,
-        <<"ceil">>      => fun(X)   -> sc_math:ceil(X) end,
-        <<"truncate">>  => fun(X)   -> trunc(X) end,
-        <<"trunc">>     => fun(X)   -> trunc(X) end,
+        <<"floor">>     => fun(X)        -> sc_math:floor(X) end,
+        <<"ceiling">>   => fun(X)        -> sc_math:ceil(X) end,
+        <<"ceil">>      => fun(X)        -> sc_math:ceil(X) end,
+        <<"truncate">>  => fun(X)        -> trunc(X) end,
+        <<"trunc">>     => fun(X)        -> trunc(X) end,
 
-        <<"zero?">>     => fun(0)   -> <<"#t">>; (0.0) -> <<"#t">>; (_) -> <<"#f">> end,  % todo should this be typesafe?  is zero? 0.0 #t?
+        <<"zero?">>     => fun(0)        -> <<"#t">>; (0.0) -> <<"#t">>; (_) -> <<"#f">> end,  % todo should this be typesafe?  is zero? 0.0 #t?
+        <<"positive?">> => fun(X)        when X > 0, is_number(X) -> <<"#t">>; <<"#f">> end, 
 
-        <<"gcd">>       => fun(X,Y) -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
-        <<"lcm">>       => fun(X,Y) -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
+        <<"gcd">>       => fun(X,Y)      -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
+        <<"lcm">>       => fun(X,Y)      -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
 
     }.  % todo
 
