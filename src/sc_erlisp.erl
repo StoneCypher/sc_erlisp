@@ -120,6 +120,7 @@ global_environment() ->
 
         <<"zero?">>     => fun(0)        -> <<"#t">>; (0.0) -> <<"#t">>; (_) -> <<"#f">> end,  % todo should this be typesafe?  is zero? 0.0 #t?
         <<"positive?">> => fun(X)        when X > 0, is_number(X) -> <<"#t">>; <<"#f">> end, 
+        <<"negative?">> => fun(X)        when X < 0, is_number(X) -> <<"#t">>; <<"#f">> end, 
 
         <<"gcd">>       => fun(X,Y)      -> sc_math:gcd(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
         <<"lcm">>       => fun(X,Y)      -> sc_math:lcm(X,Y) end   % todo whargarbl probably needs to take /* instead of /2
