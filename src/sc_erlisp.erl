@@ -111,6 +111,7 @@ global_environment() ->
         <<"remainder">> => fun(X,Y)      -> X rem Y end,
         <<"modulo">>    => fun(X,Y)      -> X rem Y end,
         <<"expt">>      => fun(X,Y)      -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
+        <<"sqrt">>      => fun(X)        -> math:sqrt(X) end,
 
         <<"min">>       => fun(X,Y)      -> min(X,Y) end,  % todo whargarbl needs to take /* instead of /2
         <<"max">>       => fun(X,Y)      -> max(X,Y) end,  % todo whargarbl needs to take /* instead of /2
