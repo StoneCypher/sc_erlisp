@@ -30,8 +30,17 @@ Improvements will be gladly accepted.
 Usage
 -----
 
+```erlang
 1> sc_erlisp:run("(+ 2 3)").
 5
+
+2> sc_erlisp:run("(* (/ 6 4) (- 5 2))").
+4.5
+
+3> sc_erlisp:run("(odd? (+ 2 3))").
+<<"#t">>
+```
+
 
 
 
