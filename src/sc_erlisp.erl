@@ -1,6 +1,8 @@
 
 -module(sc_erlisp).
 
+% http://people.csail.mit.edu/jaffer/r5rs_8.html
+
 
 
 
@@ -100,17 +102,18 @@ global_environment() ->
         <<"eqv?">>      => fun(X,Y)      -> case (X == Y) of true -> <<"#t">>; _ -> <<"#f">> end end,  % todo whargarbl not an adequate impl
         <<"symbol?">>   => fun(X)        -> is_a_symbol(X) end,
 
-        <<"+">>         => fun(X,Y)      -> X+Y end,
-        <<"-">>         => fun(X,Y)      -> X-Y end,
-        <<"*">>         => fun(X,Y)      -> X*Y end,
-        <<"/">>         => fun(X,Y)      -> X/Y end,
+        <<"+">>         => fun(X,Y)      -> X+Y end,   % todo whargarbl needs to take /* instead of /2
+        <<"-">>         => fun(X,Y)      -> X-Y end,   % optional /*
+        <<"*">>         => fun(X,Y)      -> X*Y end,   % todo whargarbl needs to take /* instead of /2
+        <<"/">>         => fun(X,Y)      -> X/Y end,   % optional /*
+        <<"abs">>       => fun(X)        -> abs(X) end,
         <<"quotient">>  => fun(X,Y)      -> X div Y end,
         <<"remainder">> => fun(X,Y)      -> X rem Y end,
         <<"modulo">>    => fun(X,Y)      -> X rem Y end,
         <<"expt">>      => fun(X,Y)      -> math:pow(X,Y) end,  % todo whargarbl add to tests - error: should return int for int,int -> int; returns float because c stdlib
 
-        <<"min">>       => fun(X,Y)      -> min(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
-        <<"max">>       => fun(X,Y)      -> max(X,Y) end,  % todo whargarbl probably needs to take /* instead of /2
+        <<"min">>       => fun(X,Y)      -> min(X,Y) end,  % todo whargarbl needs to take /* instead of /2
+        <<"max">>       => fun(X,Y)      -> max(X,Y) end,  % todo whargarbl needs to take /* instead of /2
 
         <<"floor">>     => fun(X)        -> sc_math:floor(X) end,
         <<"ceiling">>   => fun(X)        -> sc_math:ceil(X) end,
