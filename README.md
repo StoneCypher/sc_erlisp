@@ -1,7 +1,7 @@
 sc_erlisp
 =========
 
-All the cool kids have made a scheme; I figure I ought to too.
+All the cool kids have made a scheme; I figure I ought to too.  Requires Erlang R17.
 
 ![Language](http://img.shields.io/badge/Language-Lisp_in_Erlang-000000.svg) &nbsp;
 ![Platform](http://img.shields.io/badge/Platform-OTP-000000.svg) &nbsp;
