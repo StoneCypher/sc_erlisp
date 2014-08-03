@@ -3,6 +3,13 @@ sc_erlisp
 
 All the cool kids have made a scheme; I figure I ought to too.
 
+![Language](http://img.shields.io/badge/Language-Lisp_in_Erlang-000000.svg) &nbsp;
+![Platform](http://img.shields.io/badge/Platform-OTP-000000.svg) &nbsp;
+![License](http://img.shields.io/badge/License-MIT-000055.svg) &nbsp;
+![Status](http://img.shields.io/travis/StoneCypher/sc_erlisp.svg) &nbsp;
+![Release](http://img.shields.io/github/release/StoneCypher/sc_erlisp.svg) &nbsp;
+[![Issues](http://img.shields.io/github/issues/StoneCypher/sc_erlisp.svg)](https://github.com/StoneCypher/sc_erlisp/issues)
+
 
 
 
